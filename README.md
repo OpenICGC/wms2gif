@@ -75,3 +75,4 @@ The service is listening for GET requests in the _pathMainWeb_ folder and needs 
 The following request `http://_serverURL_/_pathMainWeb_/?bbox=&a@b.com` would generate a GIF from the given bbox and send an email with a download link to a@b.com when finishes.
 
 Take into account that the service is using the script configuration file to generate the GIF. The [python script configuration](#configuration) section details its content.
+
