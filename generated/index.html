@@ -1,0 +1,110 @@
+<html>
+<head>
+	<style>
+		.footer {
+			font-weight: 600;
+			position: absolute; 
+			bottom: 10;
+			width: 99%;
+		}
+		.footer-right {
+			width: 80%;
+			text-align: right;
+			display: inline-block;
+		}
+		.footer-row > a {
+			text-decoration: none;
+			font-weight: 600;
+		}
+		.footer-row > a > img,
+		.footer-right > a > img {
+			vertical-align: middle;
+		}
+		.footer-row > a > img {
+			margin-right: 10px;
+		}
+		.row {
+			width: 100%;
+			text-align: center;
+		}
+	</style>
+	<script>
+	(function(i, s, o, g, r, a, m) {
+		i['GoogleAnalyticsObject'] = r;
+		i[r] = i[r] || function() {
+		(i[r].q = i[r].q || []).push(arguments)
+		}, i[r].l = 1 * new Date();
+		a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+		a.async = 1;
+		a.src = g;
+		m.parentNode.insertBefore(a, m)
+	})(window, document, 'script',
+		'//www.google-analytics.com/analytics.js', 'ga');
+
+		ga('set', 'transport', 'beacon');
+			ga('create', 'UA-46332195-2', 'auto');
+
+			ga('send', 'pageview');
+
+	</script>
+</head>
+
+<body onLoad="init()">
+	<a href="https://www.icgc.cat" target="_blank"><img src="220px-ICGC.svg.png" alt="Logo ICGC" height="90" width="220"></a>
+	<div id="filePresent">
+		<h5>Fes click
+			<a id="downloadLink" href="" target="_blank" >aquí</a>
+			per descarregar el fitxer
+		</h5>
+		<div class="row">
+			<img id="gif" src="" alt="Imatge" height="512" width="512">
+		</div>
+	</div>
+	<div id="fileNotPresent">
+		<h3>El fitxer no es pot descarregar</h3>
+		<h5>Hem enviat un avís per veure que ha passat. Disculpa les molèsties</h5>
+	</div>
+	<div class="footer">
+		<div class="footer-row">
+			Desenvolupat per: <a href="https://betaportal.icgc.cat" target="_blank"><img src="geostart.jpeg" alt="Logo Geostart" height="50" width="50"></a>
+			<div class="footer-right">
+				Segueix-nos a Twitter: <a href="https://twitter.com/geostarters/" target="_blank"><img src="twitter.png" alt="Logo Twitter" height="50" width="50"></a>
+				Visita el nostre repositori: <a href="https://github.com/gencat/ICGC-comparador-gificador" target="_blank"><img src="github.png" alt="Logo Github" height="50" width="50"></a>
+			</div>
+		</div>
+	</div>
+    <script>
+
+		function init(){
+
+			var filePresent = document.querySelector("#filePresent");
+			var fileNotPresent = document.querySelector("#fileNotPresent");
+			var gif = document.querySelector("#gif");
+			var downloadLink = document.querySelector("#downloadLink");
+
+			var filePos = window.location.href.indexOf('?');
+			var _file = window.location.href.slice(filePos + 1);
+			if(filePos !== -1) {
+
+				var urlFile = 'http://betaserver2.icgc.cat/wms2gif/generated/' + _file;
+
+				filePresent.style.display = "block";
+				fileNotPresent.style.display = "none";
+				downloadLink.setAttribute("href", urlFile);
+				gif.setAttribute("src", urlFile);
+				ga('send', 'event', 'gificador', 'done_download', _file, 1);
+
+			}else{
+
+				filePresent.style.display = "none";
+				fileNotPresent.style.display = "block";
+				ga('send', 'event', 'gificador', 'error_download', _file, 1);
+
+			}
+
+		}
+
+   </script>
+</body>
+
+</html>

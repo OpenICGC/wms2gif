@@ -8,7 +8,7 @@ class GifGenerator {
     static run(queryParameters) {
 
         const fileName = uuid();
-        const fileURL = `http://${config.serverURL}/${config.pathMainWeb}/generated/${fileName}.gif`;
+        const fileURL = `http://${config.serverURL}/${config.pathMainWeb}/generated/?${fileName}.gif`;
         const task = spawn("python", [
             "gifGenerator.py",
             "--bbox",
