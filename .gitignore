@@ -1,2 +1,3 @@
 generated/*.gif
 !generated/0.gif
+node_modules/
