@@ -63,7 +63,7 @@ def createGIF(name, width, height, srs, inBbox, inDuration):
 
 			if(layer["overlay"] != ""):
 				yearImage = imageio.imread(layer["overlay"])
-				if(np.any(image)):
+				if(np.count_nonzero(image) != 0):
 					(width, height, depth) = yearImage.shape
 					for i in range(width):
 						for j in range(height):
