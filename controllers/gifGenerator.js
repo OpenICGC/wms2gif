@@ -11,7 +11,7 @@ class GifGenerator {
 		const centerX = (parseFloat(bbox[0]) + parseFloat(bbox[2]))/2.0;
 		const centerY = (parseFloat(bbox[1]) + parseFloat(bbox[3]))/2.0;
         const fileName = `${uuid()}_${centerX.toFixed(8)}_${centerY.toFixed(8)}`;
-		const fileURL = `http://${config.serverURL}/${config.pathMainWeb}/generated/?${fileName}.gif`;
+		const fileURL = `https://${config.serverURL}/${config.pathMainWeb}/generated/?${fileName}.gif`;
 		const start = Date.now();
         const task = spawn("python", [
             "gifGenerator.py",

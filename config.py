@@ -1,5 +1,5 @@
 layerDefinitions = {}
-layerDefinitions["http://tilemaps.icgc.cat/mapfactory/service?"] = [
+layerDefinitions["http://geoserveis.icgc.cat/icc_ortohistorica/wms/service?"] = [
     {"name":"ovaa10m", "overlay":"./data/1945.png"}, 
     {"name":"ovab5m", "overlay":"./data/1956.png"}, 
     {"name":"orto5m1983", "overlay":"./data/1983.png"}, 

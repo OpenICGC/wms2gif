@@ -8,6 +8,7 @@ import os.path
 import argparse
 import random
 import string
+import os
 
 import config
 
@@ -47,6 +48,7 @@ def createGIF(name, width, height, srs, inBbox, inDuration):
 	images = []
 	index = 0
 	bbox = createSquareBBox(inBbox)
+	os.environ['IMAGEIO_REQUEST_TIMEOUT'] = '20'
 	for layerDef in config.layerDefinitions:
 		for layer in config.layerDefinitions[layerDef]:
 			url = buildWMSURL(layerDef, layer["name"], width, height, srs, bbox)
@@ -84,12 +86,10 @@ def createGIFsFromJSONFile(fileName, bboxParam, idParam, srid, duration):
 
 	with open(fileName) as f:
 		data = json.load(f)
-
 		created = 0
 		outputFolder = os.path.dirname(os.path.abspath(__file__)) + "/generated/"
 		for feature in data['features']:
 			bbox = feature['properties'][bboxParam]
-
 			id = created
 			if(idParam is not None):
 				id = feature['properties'][idParam]
